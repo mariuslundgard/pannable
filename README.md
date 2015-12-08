@@ -12,9 +12,9 @@ npm install pannable
 ## Example
 
 ```js
-import {createPannable} from 'pannable'
+import {createPannableRange} from 'pannable'
 
-const carousel = createPannable()
+const carousel = createPannableRange()
 const carouselEl = document.querySelector('.carousel')
 
 const diffHandlers = {
