@@ -1,9 +1,8 @@
 {
   "name": "pannable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage gesture input on a pannable scale, designed as a utility abstraction for carousel interfaces.",
   "main": "lib/pannable-range.js",
-  "dependencies": {},
   "devDependencies": {
     "babel": "^6.3.13",
     "babel-cli": "^6.3.13",
@@ -29,5 +28,13 @@
     "build-example": "webpack --config example/webpack.config.js"
   },
   "author": "Marius Lundgård <studio@mariuslundgard.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariuslundgard/pannable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mariuslundgard/pannable/issues"
+  },
+  "homepage": "https://github.com/mariuslundgard/pannable#readme"
 }
