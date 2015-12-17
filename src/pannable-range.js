@@ -62,23 +62,16 @@ class PannableRange {
       this.startOffset = null
       this.cursor = null
 
-      const absVelocity = Math.abs(this.velocity)
+      const index = this.velocity < 0
+        ? Math.round(this.index - 1)
+        : Math.round(this.index + 1)
 
-      // Calculate target index based on the current position and velocity
-      if (absVelocity > 5 && absVelocity < 60) {
-        const index = this.velocity < 0
-          ? Math.round(this.index - 1)
-          : Math.round(this.index + 1)
+      this.targetIndex = constrainIndex(
+        index,
+        this.length
+      )
 
-        this.targetIndex = constrainIndex(
-          index,
-          this.length
-        )
-      } else {
-        this.targetIndex = calcTargetIndex(
-          this.offset, this.velocity, this.width, this.length
-        )
-      }
+      this.velocity = 0
 
       this.startMotion()
     }

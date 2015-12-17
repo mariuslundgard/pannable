@@ -1,6 +1,6 @@
 {
   "name": "pannable",
-  "version": "0.0.3",
+  "version": "0.0.4-alpha.1",
   "description": "Manage gesture input on a pannable scale, designed as a utility abstraction for carousel interfaces.",
   "main": "lib/pannable-range.js",
   "devDependencies": {
