@@ -35,11 +35,11 @@ describe('pannable-range', () => {
     assert.equal(range.velocity, -10)
 
     // Move
-    range.panTo(50)
+    range.panTo(60)
     assert.equal(range.startCursor, 90)
-    assert.equal(range.cursor, 50)
-    assert.equal(range.offset, -40)
-    assert.equal(range.velocity, -30)
+    assert.equal(range.cursor, 60)
+    assert.equal(range.offset, -30)
+    assert.equal(range.velocity, -20)
 
     // Let go
     range.panStop()

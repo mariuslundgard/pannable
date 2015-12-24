@@ -16,6 +16,7 @@ class PannableRange {
     this.offset = 0
     this.startCursor = null
     this.startOffset = null
+    this.startIndex = null
     this.cursor = null
     this.velocity = 0
     this.targetIndex = 0
@@ -40,6 +41,7 @@ class PannableRange {
   panStart (cursor) {
     this.stopMotion()
     this.isPanning = true
+    this.startIndex = this.index
     this.startOffset = this.offset
     this.startCursor = cursor
     this.cursor = cursor
@@ -62,16 +64,26 @@ class PannableRange {
       this.startOffset = null
       this.cursor = null
 
-      const index = this.velocity < 0
-        ? Math.round(this.index - 1)
-        : Math.round(this.index + 1)
+      const absVelocity = Math.abs(this.velocity)
 
-      this.targetIndex = constrainIndex(
-        index,
-        this.length
-      )
+      // Calculate target index based on the current position and velocity
+      if (absVelocity > 7 && absVelocity < this.width / 5) {
+        const index = this.velocity < 0
+          ? Math.round(this.startIndex - 1)
+          : Math.round(this.startIndex + 1)
 
-      this.velocity = 0
+        this.velocity = 0
+        this.targetIndex = constrainIndex(
+          index,
+          this.length
+        )
+      } else {
+        this.targetIndex = calcTargetIndex(
+          this.offset, this.velocity, this.width, this.length
+        )
+      }
+
+      this.startIndex = null
 
       this.startMotion()
     }

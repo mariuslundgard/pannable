@@ -12,15 +12,7 @@ export function constrainIndex (index, length) {
 }
 
 export function calcTargetIndex (offset, velocity, width, length) {
-  let absVelocity = Math.abs(velocity)
-  let currOffset = offset
-  let currVelocity = velocity
-
-  while (absVelocity > MIN_POSITION) {
-    absVelocity = Math.abs(currVelocity)
-    currVelocity *= DECAY
-    currOffset += currVelocity
-  }
+  const currOffset = offset + (velocity * (DECAY / 2 * 10))
 
   return constrainIndex(currOffset / width, length)
 }

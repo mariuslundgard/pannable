@@ -85,7 +85,7 @@ const diffHandlers = {
     carouselEl.childNodes[index].style.display = 'block'
   },
   translate ([index, offset]) {
-    carouselEl.childNodes[index].style.opacity = offset + 1
+    // carouselEl.childNodes[index].style.opacity = offset + 1
     carouselEl.childNodes[index].style.transform = (
       `translate3d(0, ${offset * 100}%, 0)`
     )
