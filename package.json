@@ -1,8 +1,11 @@
 {
   "name": "pannable",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Manage gesture input on a pannable scale, designed as a utility abstraction for carousel interfaces.",
   "main": "lib/pannable.js",
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-preset-es2015": "^6.2.4",
