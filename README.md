@@ -1,52 +1,25 @@
 # pannable
 
-Manage gesture input on a pannable scale, designed as a utility abstraction for
-swiping carousel interfaces.
+A low-level abstraction for dealing with input on a pannable scale. Ideal for touch-enabled slider interfaces.
 
 ## Installation
 
 ```sh
-npm install pannable
+npm install pannable --save
 ```
 
 ## Example
 
 ```js
-import {createPannableRange} from 'pannable'
+import {createPannable} from 'pannable'
 
-const carousel = createPannableRange()
-const carouselEl = document.querySelector('.carousel')
+const pannable = createPannable({length: 10, width: 800})
+const pannableEl = document.querySelector('.pannable')
 
-const diffHandlers = {
-  show ([index]) {
-    carouselEl.childNodes[index].style.display = 'none'
-  },
-  hide ([index]) {
-    carouselEl.childNodes[index].style.display = 'block'
-  },
-  translate ([index, offset]) {
-    carouselEl.childNodes[index].style.transform = (
-      `translate3d(0, ${offset * 100}%, 0)`
-    )
-  }
-}
+pannable.on('move', (position) => pannableEl.style.left = `${position}px`)
 
-// Add a render handler
-carousel.onRender((diffs) => {
-  diffs.forEach(([type, ...args]) => diffHandlers[type](args))
-})
-
-carouselEl.addEventListener('touchstart', (e) => {
-  const touch = e.touches[0]
-  carousel.panStart(touch.clientY)
-})
-
-window.addEventListener('touchmove', (e) => {
-  const touch = e.touches[0]
-  carousel.panTo(touch.clientY)
-})
-
-window.addEventListener('touchend', (e) => {
-  carousel.panStop()
-})
+// Setup event handlers to trigger panning
+pannableEl.addEventListener('touchstart', (event) => pannable.start(event.touches[0].clientX))
+addEventListener('touchmove', (event) => pannable.move(event.touches[0].clientX))
+addEventListener('touchend', () => pannable.stop())
 ```

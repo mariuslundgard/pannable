@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "eslint-config-ml"
-  ],
-  "env": {
-    "browser": true,
-    "node": true
-  }
-}
