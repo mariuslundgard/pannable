@@ -1,7 +1,7 @@
 {
   "name": "pannable",
-  "version": "1.0.0-alpha.2",
-  "description": "Manage gesture input on a pannable scale, designed as a utility abstraction for carousel interfaces.",
+  "version": "1.0.0",
+  "description": "Touch manager for swiping to points.",
   "main": "lib/pannable.js",
   "files": [
     "lib"
